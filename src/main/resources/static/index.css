@@ -1,0 +1,12 @@
+@charset "UTF-8";
+head,body,main {
+    background-color: silver;
+    text-align: center;
+    margin-left: auto; margin-right: auto;
+}
+h1,h2,p {
+    color: teal;
+}
+select {
+    color: teal; 
+}
