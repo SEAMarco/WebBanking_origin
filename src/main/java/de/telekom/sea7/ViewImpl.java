@@ -1,6 +1,8 @@
 package de.telekom.sea7;
 
 import java.time.LocalDateTime;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -8,7 +10,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller //
 public class ViewImpl {
 
-    @GetMapping("/index.html")
+    @Autowired
+    ZahlungImpl zahlung;
+
+    @GetMapping("/test.json")
+    @ResponseBody
+    public String getJSON() {
+    String empfaenger = zahlung.getEmpfaenger();
+    String iban = zahlung.getIban();
+    String bic = zahlung.getBic();
+    Double betrag = zahlung.getBetrag();
+    String waehrung = zahlung.getWaehrung();
+    String verwendungszweck = zahlung.getVerwendungszweck();
+    return 
+    "{\"Zahlung\":{"
+    +" \"Empfaenger\": "       + "\"empfaenger\","
+    +" \"Iban\": "            + "\"+iban+\","
+    +" \"Bic\": "             + "\"+bic+\","
+    +" \"Betrag\": "          + "\"+betrag+\","
+    +" \"Waehrung\": "        + "\"+waehrung+\","
+    +" \"Verwendungszweck\": "+ "\"+verwendungszweck+\","
+    +"}}";
+    }
+}
+
+   /* @GetMapping("/index.html")
     @ResponseBody 
     public String getHtml() {
         String body = LocalDateTime.now().toString();
@@ -32,3 +58,4 @@ public class ViewImpl {
         return css;
     }
 }
+*/
