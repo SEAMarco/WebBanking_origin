@@ -2,29 +2,95 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=firefox">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebBanking</title>
+
+ <title> WebBanking </title>
+    <meta charset="UTF-8">       
+    <link href="index.css" rel="stylesheet">
     <script src="index.js" type="module"></script>
-    <link rel="stylesheet" href="index.css">
+    
 </head>
-<title>BigBankingBroject</title>
-<body>
-    <h1>BigBankingBroject for Web</h1>
 
-	
-	</body>
-</head>
 <body>
- <div>
+
+<h1> Web Banking </h1>
+<h2>Big Banking Projekt</h2><br>
+
+<img src="banking.jpg">
+
+<p> Hier kannst du eine neue Überweisung tätigen. Bitte gib die Daten ein.</p>
+
+<main>
+
+ <input id="eingabefeld1" placeholder="Empfaenger" type= "text"> <br>
+ <input id="eingabefeld2" placeholder="Iban" type= "text"> <br>
+ <input id="eingabefeld3" placeholder="BIC" type= "text"> <br>
+ <input id="eingabefeld4" placeholder="Betrag" type= "text"> <br>
+ <input id="eingabefeld5" placeholder="Waehrung" type= "text"> <br>
+ <input id="eingabefeld6" placeholder="Verwendungszweck" type= "text"> <br>
+
+
+
+<p>Was möchest du als nächsten tun?</p>
+
 <select name= "Auswahl">
-<option value= "p1">eine Überweisung tätigen</option>
-<option value= "p2">eine Überweisung anzeigen</option>
-<option value= "p3">alle Überweisung anzeigen</option>
+<option value= "p1">eine bestimmte Überweisung anzeigen</option>
+<option value= "p2">alle Überweisung anzeigen</option>
+</select> 
 
-</select>
-  <input id = "feld1" type ="text" >Empfänger<br>
-  
-</div> 
+<div>
+		<h2>Übersicht TestKontobewegungen</h2>
+		<button id="Button" type="button">OK</button>
+		<p>
+		<strong>Empfaenger:</strong>  <span id="empfaenger"></span>
+		<br>
+		<strong>IBAN:</strong>  <span id="iban"></span>
+		<br>
+		<strong>BIC:</strong> <span id="bic"></span>
+		<br>
+		<strong>Betrag:</strong>  <span id="betrag"></span>
+		<br>
+		<strong>Währung:</strong>  <span id="waehrung"></span>
+		<br>
+		<strong>Verwendungszweck:</strong> <span id="verwendungszweck"></span>
+		</p>
+		
+</div>
+<script>
+
+function empfaenger1(antwort) {
+	var json = antwort.json();
+	return json;
+}
+
+function empfaenger2(json) {
+	var empfaenger = json.Empfaenger;
+	var iban = json.Iban;
+	var bic = json.Bic;
+	var betrag = json.Betrag;
+	var waehrung = json.Waehrung;
+	var verwendungszweck = json.Verwendungszweck;
+
+	//Ausgabe Bankdaten
+	//document.getElementById("Output").innerHTML;
+	document.getElementById("empfaenger").innerHTML = empfaenger;
+	document.getElementById("iban").innerHTML = iban;
+	document.getElementById("bic").innerHTML = bic;
+	document.getElementById("betrag").innerHTML = betrag;
+	document.getElementById("waehrung").innerHTML = waehrung;
+	document.getElementById("verwendungszweck").innerHTML = verwendungszweck;
+}
+
+function Testdaten_abrufen () {
+		
+	fetch("test.json")
+	.then(empfaenger1)
+	.then(empfaenger2);
+	
+}
+
+document.getElementById("Button").addEventListener("click", Testdaten_abrufen);
+
+</script>
+</main>
 </body>
 </html>
