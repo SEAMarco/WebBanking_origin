@@ -1,13 +1,9 @@
 package de.telekom.sea7;
 
 import java.time.LocalDateTime;
-<<<<<<< HEAD
-
-=======
 import java.util.Iterator;
 
 import de.telekom.sea7.ZahlungImpl;
->>>>>>> branch 'master' of git@github.com:SEAMarco/WebBanking.git
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,47 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller 
 public class ViewImpl implements View {
 
-<<<<<<< HEAD
-    @Autowired
-    ZahlungImpl zahlung;
-
-    @GetMapping("/test.json")
-    @ResponseBody
-    public String getJSON() {
-    String empfaenger = zahlung.getEmpfaenger();
-    String iban = zahlung.getIban();
-    String bic = zahlung.getBic();
-    Double betrag = zahlung.getBetrag();
-    String waehrung = zahlung.getWaehrung();
-    String verwendungszweck = zahlung.getVerwendungszweck();
-    return 
-    "{\"Zahlung\":{"
-    +" \"Empfaenger\": "       + "\"empfaenger\","
-    +" \"Iban\": "            + "\"+iban+\","
-    +" \"Bic\": "             + "\"+bic+\","
-    +" \"Betrag\": "          + "\"+betrag+\","
-    +" \"Waehrung\": "        + "\"+waehrung+\","
-    +" \"Verwendungszweck\": "+ "\"+verwendungszweck+\","
-    +"}}";
-    }
-}
-
-   /* @GetMapping("/index.html")
-    @ResponseBody 
-    public String getHtml() {
-        String body = LocalDateTime.now().toString();
-        String html = "<!doctype html>" + 
-        "<html>" + " "
-                + "<head>"
-        + " <title>Hello from getHtml</title>" 
-                + " </head>"
-                + " <body>"
-                + body
-                + " </body>"
-                + " </html>";
-        return html;
-    }
-=======
 	@Autowired
 	ZahlungImpl zahlung;
 	@Autowired
@@ -65,7 +20,6 @@ public class ViewImpl implements View {
 	ZahlungImpl zahlung2;
 	@Autowired
 	ZahlungenImpl zahlungen;
->>>>>>> branch 'master' of git@github.com:SEAMarco/WebBanking.git
 
 
 	@GetMapping("/test.html")
@@ -172,9 +126,6 @@ public String getZahlungen() {
 		//Hochzählen des Zählers für die Durchnummerierung der Ergebnisse
 		id++;
 }
-<<<<<<< HEAD
-*/
-=======
 	//Endklammer im JSON String nach Beendigung der Durchläufe anfügen
 	ergebnis = ergebnis + "}";
 	//Ergebnis zurückgeben
@@ -193,4 +144,3 @@ public String getZahlungen() {
 */
 }
 
->>>>>>> branch 'master' of git@github.com:SEAMarco/WebBanking.git
